@@ -1,0 +1,23 @@
+{
+  "name": "mpcc_api",
+  "homepage": "https://github.com/Peutra/rails_angular",
+  "authors": [
+    "Benoit Nguyen"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-ui-router": "^0.4.0",
+    "angular-materialize": "^0.2.2"
+  }
+}
