@@ -8,7 +8,7 @@
 /.bundle
 
 # Ignore vendor folder
-/vendor
+/public/vendor
 
 # Ignore vendor folder
 /config/secrets.yml
