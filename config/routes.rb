@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  root 'application#index'
-
-  
-
-  get '*path' => redirect('/')
+  root to: 'catch_all#index'
+  get '*path', to: 'catch_all#index'
 end

@@ -1,21 +1,3 @@
-app.controller('loginCtrl', [ '$scope', 'AuthService', '$state', '$rootScope', function($scope, AuthService, $state, $rootScope) {
-  var vm = this;
+app.controller('loginCtrl', [ '$scope', function($scope) {
 
-  vm.credentials = {
-    email : "",
-    password : ""
-  };
-
-  vm.onSubmit = function () {
-    AuthService
-    .login(vm.credentials)
-    .catch(function(err){
-      alert(err);
-    })
-    .then(function() {
-      $rootScope.islogged = true
-      $state.go("profile")
-    });
-  };
-
-}]);
+}])

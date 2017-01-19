@@ -1,36 +1,33 @@
-// app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
-//
-//     var registerState = {
-//       name: 'register',
-//       url: '/register',
-//       templateUrl: '/app_client/views/register.html',
-//       controller: 'registerController',
-//       controllerAs: 'vm'
-//     }
-//
-//     var loginState = {
-//       name: 'login',
-//       url: '/login',
-//       templateUrl: '/app_client/views/login.html',
-//       controller: 'loginController',
-//       controllerAs: 'vm'
-//     }
-//
-//     var profileState = {
-//       name: 'profile',
-//       url: '/profile',
-//       templateUrl: '/app_client/views/profile.html',
-//       controller: 'profileController',
-//       controllerAs: 'vm'
-//     }
-//
-//     $stateProvider.state(registerState)
-//     $stateProvider.state(loginState)
-//     $stateProvider.state(profileState)
-//
-//     $locationProvider.html5Mode({
-//         enabled: true,
-//         requireBase: false
-//     });
-//
-// })
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+
+    $urlRouterProvider.otherwise('/');
+
+    var homeState = {
+      name: 'home',
+      url: "/",
+      templateUrl: "views/home.html",
+      controller: 'homeCtrl',
+      controllerAs: 'vm'
+    }
+
+    var loginState = {
+      name: 'login',
+      url: '/login',
+      templateUrl: '/views/auth/login.html',
+      controller: 'loginCtrl',
+      controllerAs: 'vm'
+    }
+
+    var registerState = {
+      name: 'register',
+      url: '/register',
+      templateUrl: '/views/auth/register.html',
+      controller: 'registerCtrl',
+      controllerAs: 'vm'
+    }
+
+    $stateProvider.state(loginState)
+    $stateProvider.state(registerState)
+    $stateProvider.state(homeState)
+
+})
