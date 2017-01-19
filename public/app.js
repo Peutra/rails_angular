@@ -1,4 +1,1 @@
-var app = angular.module('MPCC', [
-          'ui.router',
-          'ui.materialize'
-        ]);
+var app = angular.module('MPCC', ['ui.router', 'ui.materialize']);
