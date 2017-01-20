@@ -31,20 +31,21 @@ app.factory('authService',  ['$http', '$window', function($http, $window) {
         payload = JSON.parse(payload);
         return {
           email : payload.email,
-          name : payload.name
+          pseudonym : payload.pseudonym
         };
       }
     };
 
     register = function(user) {
       return $http.post('/api/register', user).then(function(data){
-        saveToken(token);
+        console.log(data)
+        saveToken(data.token);
       });
     };
 
     login = function(user) {
       return $http.post('/api/login', user).then(function(data) {
-        saveToken(token);
+        saveToken(data.token);
       });
     };
 

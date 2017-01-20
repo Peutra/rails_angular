@@ -9,7 +9,7 @@ app.controller('registerCtrl', ['$scope', 'authService', '$location', function($
       authService
         .register(vm.credentials)
         .catch(function(err){
-          
+          console.log(err)
         })
         .then(function(){
           $location.path('home')

@@ -4,11 +4,12 @@ class AuthenticationController < ApplicationController
 
   def register
     @new_user = User.new(user_params)
+    token = User.represent_user_with_token(@new_user)
+    @new_user.token = token
     if @new_user.save!
-      p User.represent_user_with_token(@new_user)
-      render status: 200, message: "User saved"
+      render json: {:status => 200, :message => "Merci pour votre inscription !", :token => token}      
     else
-      render status: 400, message: "Something went wrong"
+      render json: {:status => 400, :message => "Petit problème technique"}
     end
   end
 
