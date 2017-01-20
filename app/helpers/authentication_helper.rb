@@ -26,4 +26,5 @@ module AuthenthicationHelper
   def token
     request.headers ['Authorization'].split(' ').last
   end
+
 end

@@ -5,11 +5,11 @@ app.controller('registerCtrl', ['$scope', 'authService', '$location', function($
       email : "",
       password : ""
     };
-    vm.onSubmit = function () {      
+    vm.onSubmit = function () {
       authService
         .register(vm.credentials)
         .catch(function(err){
-          alert(err);
+          
         })
         .then(function(){
           $location.path('home')
