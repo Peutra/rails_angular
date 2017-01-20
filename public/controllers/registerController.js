@@ -5,8 +5,7 @@ app.controller('registerCtrl', ['$scope', 'authService', '$location', function($
       email : "",
       password : ""
     };
-    vm.onSubmit = function () {
-      console.log(vm.credentials)
+    vm.onSubmit = function () {      
       authService
         .register(vm.credentials)
         .catch(function(err){

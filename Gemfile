@@ -25,6 +25,9 @@ gem 'sorcery'
 gem 'validates_email_format_of'
 gem 'jwt'
 
+# To respond in json
+gem "responders"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
