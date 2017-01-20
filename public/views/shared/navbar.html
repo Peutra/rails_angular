@@ -1,7 +1,22 @@
-<nav>
+<script>
+  $( document ).ready(function(){
+    $(".button-collapse").sideNav();
+  });
+</script>
+
+<nav role="navigation">
   <div class="nav-wrapper">
     <a ui-sref="home" class="brand-logo">MPCC</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
+    <a href="#" class="button-collapse" data-activates="side-menu" data-sidenav="left" data-menuwidth="200" data-closeonclick="true">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </a>
+    <ul class="right hide-on-med-and-down">
+      <li><a ui-sref="login">Connection</a></li>
+      <li><a ui-sref="register">Inscription</a></li>
+      <li><a href="#">Produits</a></li>
+      <li><a href="#">Sondage</a></li>
+    </ul>
+    <ul class="side-nav" id="side-menu">
       <li><a ui-sref="login">Connection</a></li>
       <li><a ui-sref="register">Inscription</a></li>
       <li><a href="#">Produits</a></li>

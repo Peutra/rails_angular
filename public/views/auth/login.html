@@ -1,16 +1,16 @@
 <div class="spacer"></div>
 <div class="spacer"></div>
 <div class="row">
-    <form class="col s6 offset-s3">
+    <form class="col s6 offset-s3" ng-submit="vm.onSubmit()">
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
+          <input id="email" type="email" class="validate" ng-model="vm.credentials.email">
           <label for="email">Email</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
+          <input id="password" type="password" class="validate" ng-model="vm.credentials.password">
           <label for="password">Mot de passe</label>
         </div>
       </div>
