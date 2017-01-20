@@ -1,11 +1,11 @@
-app.factory('AuthService',  ['$http', '$window', function($http, $window) {
+app.factory('authService',  ['$http', '$window', function($http, $window) {
 
     var saveToken = function (token) {
-      localStorage['mean-token'] = token;
+      localStorage['mpcc-token'] = token;
     };
 
     var getToken = function () {
-      return localStorage['mean-token'];
+      return localStorage['mpcc-token'];
     };
 
     var isLoggedIn = function() {
@@ -38,18 +38,18 @@ app.factory('AuthService',  ['$http', '$window', function($http, $window) {
 
     register = function(user) {
       return $http.post('/api/register', user).then(function(data){
-        saveToken(data.data.token);
+        saveToken(token);
       });
     };
 
     login = function(user) {
       return $http.post('/api/login', user).then(function(data) {
-        saveToken(data.data.token);
+        saveToken(token);
       });
     };
 
     logout = function() {
-      localStorage.removeItem('mean-token');
+      localStorage.removeItem('mpcc-token');
     };
 
     return {
