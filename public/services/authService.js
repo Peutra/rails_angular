@@ -37,15 +37,14 @@ app.factory('authService',  ['$http', '$window', function($http, $window) {
     };
 
     register = function(user) {
-      return $http.post('/api/register', user).then(function(data){
-        console.log(data)
-        saveToken(data.token);
+      return $http.post('/api/register', user).then(function(response){        
+        saveToken(response.data.token);
       });
     };
 
     login = function(user) {
-      return $http.post('/api/login', user).then(function(data) {
-        saveToken(data.token);
+      return $http.post('/api/login', user).then(function(response) {
+        saveToken(response.data.token);
       });
     };
 

@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   scope(:path => '/api') do
-    post '/register' => 'authentication#register', defaults: { format: 'json' }
+    constraints format: :json do
+      post '/register' => 'authentication#register'
+      post '/login' => 'authentication#login'
+    end
   end
 
   root to: 'catch_all#index'
