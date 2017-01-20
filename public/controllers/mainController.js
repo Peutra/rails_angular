@@ -1,5 +1,13 @@
-app.controller('mainCtrl', ['$scope', function($scope) {
+app.controller('mainCtrl', [ '$scope', 'authService', '$state', '$rootScope',  function($scope, authService, $state, $rootScope) {
 
-  $scope.message = "It works"
-  
-}])
+  $scope.logout = function() {
+    authService.logout()
+    $rootScope.isLoggedIn = authService.isLoggedIn();
+    $rootScope.currentUser = authService.currentUser();
+    $state.go('login')
+  }
+
+  $rootScope.isLoggedIn = authService.isLoggedIn();
+  $rootScope.currentUser = authService.currentUser();
+
+}]);

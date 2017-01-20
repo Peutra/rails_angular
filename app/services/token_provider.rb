@@ -4,6 +4,7 @@ module TokenProvider
   #                 > http://stackoverflow.com/questions/2505067/class-self-idiom-in-ruby
   class << self
     def issue_token(payload)
+      payload[:exp] = Time.now.to_i + 1.month
       JWT.encode(payload, Rails.application.secrets.jwt_key)
     end
 

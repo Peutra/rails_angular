@@ -11,7 +11,6 @@ app.factory('authService',  ['$http', '$window', function($http, $window) {
     var isLoggedIn = function() {
       var token = getToken();
       var payload;
-
       if(token){
         payload = token.split('.')[1];
         payload = atob(payload);
@@ -44,7 +43,6 @@ app.factory('authService',  ['$http', '$window', function($http, $window) {
 
     login = function(user) {
       return $http.post('/api/login', user).then(function(response) {
-        console.log(response.data)        
         saveToken(response.data.token);
       });
     };

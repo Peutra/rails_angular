@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, email_format: true
 
   def self.represent_user_with_token(user)
-    ::TokenProvider.issue_token(user_id: user.id)
+    ::TokenProvider.issue_token(user_id: user.id, pseudonym: user.pseudonym, email: user.email)
   end
 
 end

@@ -3,7 +3,6 @@
     $(".button-collapse").sideNav();
   });
 </script>
-
 <nav role="navigation">
   <div class="nav-wrapper">
     <a ui-sref="home" class="brand-logo">MPCC</a>
@@ -11,16 +10,30 @@
       <i class="fa fa-bars" aria-hidden="true"></i>
     </a>
     <ul class="right hide-on-med-and-down">
-      <li><a ui-sref="login">Connection</a></li>
-      <li><a ui-sref="register">Inscription</a></li>
+      <li ng-if="!isLoggedIn"><a ui-sref="register">Inscription</a></li>
+      <li ng-if="!isLoggedIn"><a ui-sref="login">Connexion</a></li>
       <li><a href="#">Produits</a></li>
       <li><a href="#">Sondage</a></li>
+      <a ng-show="isLoggedIn" class='dropdown-button btn' href='javascript:void(0);' data-activates='profile-dropdown-large' constrain-width="false" dropdown>
+        {{ currentUser.pseudonym }}
+      </a>
+      <ul id='profile-dropdown-large' class='dropdown-content'>
+        <li ng-if="isLoggedIn"><a href="#">Profil</a></li>
+        <li ng-if="isLoggedIn"><a href="#" ng-click="logout()">Déconnexion</a></li>
+      </ul>
     </ul>
     <ul class="side-nav" id="side-menu">
-      <li><a ui-sref="login">Connection</a></li>
-      <li><a ui-sref="register">Inscription</a></li>
+      <li ng-if="!isLoggedIn"><a ui-sref="register">Inscription</a></li>
+      <li ng-if="!isLoggedIn"><a ui-sref="login">Connexion</a></li>
       <li><a href="#">Produits</a></li>
       <li><a href="#">Sondage</a></li>
+      <a ng-show="isLoggedIn" class='dropdown-button btn' href='javascript:void(0);' data-activates='profile-dropdown-mobile' dropdown data-hover="true">
+        {{ currentUser.pseudonym }}
+      </a>
+      <ul id='profile-dropdown-mobile' class='dropdown-content'>
+        <li ng-if="isLoggedIn"><a href="#">Profil</a></li>
+        <li ng-if="isLoggedIn"><a href="#" ng-click="logout()">Déconnexion</a></li>
+      </ul>
     </ul>
   </div>
 </nav>

@@ -6,16 +6,16 @@ app.controller('loginCtrl', [ '$scope', 'authService', '$state', '$rootScope', '
     password : ""
   };
 
-  vm.onSubmit = function () {    
+  vm.onSubmit = function () {
     authService
     .login(vm.credentials)
     .catch(function(err){
       console.log(err)
     })
     .then(function() {
-      $location.path('home')
-      // $rootScope.islogged = true
-      // $state.go("profile")
+      $rootScope.isLoggedIn = authService.isLoggedIn();
+      $rootScope.currentUser = authService.currentUser();
+      $state.go('home')
     });
   };
 
