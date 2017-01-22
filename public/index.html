@@ -49,6 +49,9 @@
   </head>
   <body ng-controller="mainCtrl">
     <div ng-include="'/views/shared/navbar.html'"></div>
-    <ui-view></ui-view>
+    <div class="views">
+      <ui-view></ui-view>      
+    </div>
+    <div ng-include="'/views/shared/footer.html'"></div>
   </body>
 </html>

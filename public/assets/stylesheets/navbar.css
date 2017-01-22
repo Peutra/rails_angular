@@ -1,3 +1,7 @@
+nav {
+  background: #26a69a;
+}
+
 nav .nav-wrapper a:first-child {
-  margin-left: 10px; 
+  margin-left: 10px;
 }
