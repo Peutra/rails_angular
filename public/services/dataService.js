@@ -27,10 +27,6 @@ app.factory('dataService',  ['$http', 'authService', '$q', function($http, authS
       })
     }
 
-
-
-
-
   return {
     getProfile : getProfile,
     createProduct : createProduct,
