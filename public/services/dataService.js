@@ -1,4 +1,4 @@
-app.factory('dataService',  ['$http', 'authService', function($http, authService) {
+app.factory('dataService',  ['$http', 'authService', '$q', function($http, authService, $q) {
 
   var getProfile = function () {
       return $http.get('/api/profile', {
@@ -18,9 +18,23 @@ app.factory('dataService',  ['$http', 'authService', function($http, authService
     })
   }
 
+  var getProducts = function() {
+    return $http.get('/api/products')
+      .then(function(result) {
+        return result;
+      }, function(reason) {
+        return reason;
+      })
+    }
+
+
+
+
+
   return {
     getProfile : getProfile,
-    createProduct : createProduct
+    createProduct : createProduct,
+    getProducts : getProducts
   };
 
 

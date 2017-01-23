@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   # TODO REFACTO VALID TOKEN (BEFORE_ACTION FOR CREATE/UPDATE/DELETE)
 
   def index
+    render json: {:products => Product.all}
   end
 
   def display

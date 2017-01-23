@@ -28,6 +28,8 @@ gem 'jwt'
 # To respond in json
 gem "responders"
 
+gem 'rack-rewrite', '~> 1.5.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

@@ -3,6 +3,6 @@ class CatchAllController < ApplicationController
     prepend_view_path(Rails.root.join("../../public/").to_s)
   }
   def index
-    render "index"
+    render layout: "index"
   end
 end

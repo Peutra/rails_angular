@@ -81,6 +81,7 @@ GEM
     puma (3.6.2)
     rack (2.0.1)
     rack-cors (0.4.0)
+    rack-rewrite (1.5.1)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.1)
@@ -148,6 +149,7 @@ DEPENDENCIES
   pg (~> 0.18)
   puma (~> 3.0)
   rack-cors
+  rack-rewrite (~> 1.5.0)
   rails (~> 5.0.0, >= 5.0.0.1)
   responders
   sorcery
