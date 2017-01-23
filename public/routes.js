@@ -26,8 +26,17 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       controllerAs: 'vm'
     }
 
+    var createProductState = {
+      name: 'createProduct',
+      url: '/products/new',
+      templateUrl: '/views/products/create.html',
+      controller: 'createProductCtrl',
+      controllerAs: 'vm'
+    }
+
     $stateProvider.state(loginState)
     $stateProvider.state(registerState)
     $stateProvider.state(homeState)
+    $stateProvider.state(createProductState)
 
 })
