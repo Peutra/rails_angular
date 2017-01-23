@@ -1,26 +1,26 @@
 <div class="spacer"></div>
 <div class="spacer"></div>
 <div class="row">
-  <form class="col s8 offset-s2">
+  <form class="col s8 offset-s2" ng-submit="vm.createProduct()">
     <div class="row">
       <div class="input-field col s6">
-        <input placeholder="" id="first_name" type="text" class="validate">
+        <input placeholder="" id="first_name" type="text" class="validate" ng-model="vm.product.first_name">
         <label for="first_name">Prénom</label>
       </div>
       <div class="input-field col s6">
-        <input id="last_name" type="text" class="validate">
+        <input id="last_name" type="text" class="validate" ng-model="vm.product.last_name">
         <label for="last_name">Nom</label>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <textarea id="textarea1" class="materialize-textarea"></textarea>
+        <textarea id="textarea1" class="materialize-textarea" ng-model="vm.product.description"></textarea>
         <label for="textarea1">Description</label>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input type="number" name="Number" value="this is not number" class="validate"  />
+        <input type="number" name="Number" min="0" value="0" class="validate" ng-model="vm.product.value"/>
         <label for="Number">Valeur de départ</label>
       </div>
     </div>
@@ -30,7 +30,7 @@
         <div class="switch">
           <label>
             Nope
-            <input type="checkbox">
+            <input type="checkbox" ng-model="vm.product.for_sale">
             <span class="lever"></span>
             Oui
           </label>

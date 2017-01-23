@@ -10,7 +10,8 @@ app.controller('createProductCtrl', [ '$scope', 'authService', 'dataService', '$
     user_id : null
   };
 
-  vm.onSubmit = function () {
+  vm.createProduct = function () {
+    console.log(vm.product)
     dataService
     .createProduct(vm.product)
     .catch(function(err){
