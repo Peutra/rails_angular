@@ -11,7 +11,7 @@ app.factory('dataService',  ['$http', 'authService', function($http, authService
   var createProduct = function(product) {
     return $http.post('/api/products', product, {
       headers: {
-        Authorization: 'Bearer '+ authService.getToken()
+        Authorization: authService.getToken()
       }
     }).then(function(response) {
       console.log(response)

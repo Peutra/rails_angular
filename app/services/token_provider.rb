@@ -9,14 +9,9 @@ module TokenProvider
     end
 
     def valid?(token)
-      loop do
+      begin
         JWT.decode(token, Rails.application.secrets.jwt_key)
-        break if true
       end
-      # SHOULD BE EQUIVALENT TO (LOOP DO BREAK IF IS MATZ UPDATE)
-      # begin
-      #   JWT.decode(token, Rails.application.secrets.jwt_key)
-      # end
     end
   end
 end

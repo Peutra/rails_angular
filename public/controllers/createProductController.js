@@ -7,7 +7,6 @@ app.controller('createProductCtrl', [ '$scope', 'authService', 'dataService', '$
     description : "",
     value : 0,
     for_sale : false,
-    user_id : null
   };
 
   vm.createProduct = function () {
