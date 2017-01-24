@@ -10,10 +10,10 @@ class ProductsController < ApplicationController
   end
 
   def create
-    p params
     if @user_data = TokenProvider.valid?(request.headers[:Authorization])
       @user_id = @user_data[0]["user_id"]
-      @new_product = Product.new(product_params.merge(user_id: @user_id))
+      @picture_url = Cloudinary::Uploader.upload(product_params[:picture])['url']
+      @new_product = Product.new(product_params.except(:picture).merge(user_id: @user_id, picture_url: @picture_url))
       if @new_product.save
         render json: {:status => 200, :message => "Le produit a bien été créé, have fun"}
       else
@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:first_name, :last_name, :description, :value, :for_sale, :file)
+    params.permit(:first_name, :last_name, :description, :value, :for_sale, :picture)
   end
 
 end

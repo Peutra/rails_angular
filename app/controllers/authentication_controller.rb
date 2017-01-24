@@ -3,6 +3,7 @@ class AuthenticationController < ApplicationController
   respond_to :json
 
   def register
+    p user_params
     new_user = User.new(user_params)
     if new_user.save!
       token = User.represent_user_with_token(new_user)

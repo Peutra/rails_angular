@@ -10,8 +10,9 @@
 # Ignore vendor folder
 /public/assets/vendor/
 
-# Ignore vendor folder
+# Ignore secrets
 /config/secrets.yml
+/config/cloudinary.yml
 
 # Ignore all logfiles and tempfiles.
 /log/*
