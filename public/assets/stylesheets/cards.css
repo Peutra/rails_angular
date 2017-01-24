@@ -1,0 +1,15 @@
+.card {
+   min-width: 274px;
+}
+
+.card .card-content {
+  max-height: 80px;
+}
+
+.card .card-image img {
+  
+}
+
+.card span.badge.new:after {
+  content: ""
+}

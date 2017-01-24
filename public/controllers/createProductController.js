@@ -17,7 +17,7 @@ app.controller('createProductCtrl', [ '$scope', 'authService', 'dataService', '$
       console.log(err)
     })
     .then(function() {
-      $state.go('home')
+      $state.go('products')
     })
   }
 
