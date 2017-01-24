@@ -28,7 +28,6 @@ class ProductsController < ApplicationController
   def delete
   end
 
-
   private
 
   def product_params

@@ -30,7 +30,8 @@ app.factory('authService',  ['$http', '$window', function($http, $window) {
         payload = JSON.parse(payload);
         return {
           email : payload.email,
-          pseudonym : payload.pseudonym
+          pseudonym : payload.pseudonym,
+          id : payload.user_id
         };
       }
     };

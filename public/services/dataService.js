@@ -27,16 +27,32 @@ app.factory('dataService',  ['$http', 'authService', '$q', function($http, authS
   var getProducts = function() {
     return $http.get('/api/products')
       .then(function(result) {
-        return result;
+        return result
       }, function(reason) {
-        return reason;
+        return reason
+      })
+  }
+
+  var voteFor = function(user_id, product_id) {
+    var vote = {user_id: user_id, product_id: product_id}
+    console.log(vote)
+    return $http.post('/api/vote', vote, {
+        headers: {
+          'Content-Type': undefined,
+          Authorization: authService.getToken()
+        }
+      }).then(function(result) {
+        return result
+      }, function(reason) {
+        return reason
       })
   }
 
   return {
     getProfile : getProfile,
     createProduct : createProduct,
-    getProducts : getProducts
+    getProducts : getProducts,
+    voteFor : voteFor
   }
 
 
