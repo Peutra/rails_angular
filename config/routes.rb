@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       put '/products/:id' => 'products#update'
       get '/products/:id' => 'products#read'
       delete '/products/:id' => 'products#read'
+      post '/vote' => 'users#vote'
     end
   end
 
