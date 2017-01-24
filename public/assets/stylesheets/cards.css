@@ -7,5 +7,20 @@
 }
 
 .card span.badge.new:after {
-  content: ""
+  content: "";
+}
+
+.card #has-voted {
+  position: absolute;
+  width: 100%;
+  min-height: 36px;
+  z-index: 1000;
+  color: white;
+  background: #005b96;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.card #has-voted p {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }

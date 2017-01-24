@@ -17,6 +17,7 @@
         <div ng-repeat="product in products">
           <div class="col s12 m6 l4">
             <div class="card">
+              <div ng-if="product.id == hasVotted" id="has-voted" class="center"><p>A voté</p></div>
               <a ng-click="vote(product.id)" href="#">
                 <div class="card-image">
                   <img src="{{product.picture_url}}" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%);">

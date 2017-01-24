@@ -10,4 +10,8 @@ class User < ApplicationRecord
     ::TokenProvider.issue_token(user_id: user.id, pseudonym: user.pseudonym, email: user.email)
   end
 
+  def self.get_user_vote(user_id)
+    User.find(user_id).vote
+  end
+
 end

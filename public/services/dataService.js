@@ -1,4 +1,4 @@
-app.factory('dataService',  ['$http', 'authService', '$q', function($http, authService, $q) {
+app.factory('dataService',  ['$http', 'authService', function($http, authService) {
 
   var getProfile = function () {
       return $http.get('/api/profile', {
@@ -33,6 +33,17 @@ app.factory('dataService',  ['$http', 'authService', '$q', function($http, authS
       })
   }
 
+  var getUserVote = function(user_id) {
+    return $http.get('/api/vote', {
+        params: { user_id: user_id }
+      })
+      .then(function(result) {
+        return result
+      }, function(reason) {
+        return reason
+      })
+  }
+
   var voteFor = function(user_id, product_id) {
     var vote = {user_id: user_id, product_id: product_id}
     console.log(vote)
@@ -48,7 +59,8 @@ app.factory('dataService',  ['$http', 'authService', '$q', function($http, authS
     getProfile : getProfile,
     createProduct : createProduct,
     getProducts : getProducts,
-    voteFor : voteFor
+    voteFor : voteFor,
+    getUserVote : getUserVote
   }
 
 
