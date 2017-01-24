@@ -4,6 +4,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.string :first_name
       t.string :last_name
       t.text :description
+      t.string :picture
       t.float :value
       t.boolean :for_sale
       t.references :user, foreign_key: true

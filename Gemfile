@@ -28,7 +28,11 @@ gem 'jwt'
 # To respond in json
 gem "responders"
 
+# To rewrite urls (angular having #!)
 gem 'rack-rewrite', '~> 1.5.0'
+
+# To handle images upload
+gem 'cloudinary'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

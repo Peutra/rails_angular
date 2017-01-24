@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+    p params
     if @user_data = TokenProvider.valid?(request.headers[:Authorization])
       @user_id = @user_data[0]["user_id"]
       @new_product = Product.new(product_params.merge(user_id: @user_id))
@@ -31,7 +32,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:first_name, :last_name, :description, :value, :for_sale)
+    params.require(:product).permit(:first_name, :last_name, :description, :value, :for_sale, :file)
   end
 
 end

@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170122140507) do
     t.string   "first_name"
     t.string   "last_name"
     t.text     "description"
+    t.string   "picture"
     t.float    "value"
     t.boolean  "for_sale"
     t.integer  "user_id"
