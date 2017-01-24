@@ -9,8 +9,14 @@ app.factory('dataService',  ['$http', 'authService', '$q', function($http, authS
   }
 
   var createProduct = function(product) {
-    return $http.post('/api/products', product, {
+    var fd = new FormData
+    for(var key in product)
+      fd.append(key, product[key])
+
+    return $http.post('/api/products', fd, {
+      transformRequest: angular.identity,
       headers: {
+        'Content-Type': undefined,
         Authorization: authService.getToken()
       }
     }).then(function(response) {
@@ -25,13 +31,13 @@ app.factory('dataService',  ['$http', 'authService', '$q', function($http, authS
       }, function(reason) {
         return reason;
       })
-    }
+  }
 
   return {
     getProfile : getProfile,
     createProduct : createProduct,
     getProducts : getProducts
-  };
+  }
 
 
 }]);

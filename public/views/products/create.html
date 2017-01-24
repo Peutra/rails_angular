@@ -20,10 +20,21 @@
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input type="number" name="Number" min="0" value="0" class="validate" ng-model="vm.product.value"/>
+        <input type="number" name="Number" min="0" class="validate" autofocus="false" ng-model="vm.product.value">
         <label for="Number">Valeur de départ</label>
       </div>
     </div>
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>Photos</span>
+        <!-- ng-model does not work for type="file" -->
+        <input type="file" file-model="vm.product.picture" uploader="uploader" multiple>
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" placeholder="Balance une ou plusieurs photos">
+      </div>
+    </div>
+    <div class="spacer"></div>
     <div class="row">
       <div class="form-switch col s6">
         <p>A vendre ?</p>
@@ -36,8 +47,8 @@
           </label>
         </div>
       </div>
-      <div class="col s6">
-        <button class="btn waves-effect waves-light create-product-button" type="submit">Créer</button>
+      <div class="col s12">
+        <button class="btn waves-effect waves-light cyan darken-1 create-product-button" type="submit">Créer</button>
       </div>
     </div>
   </form>

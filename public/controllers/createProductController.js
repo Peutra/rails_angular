@@ -1,4 +1,4 @@
-app.controller('createProductCtrl', [ '$scope', 'authService', 'dataService', '$state', '$rootScope', '$location', function($scope, authService, dataService, $state, $rootScope, $location) {
+app.controller('createProductCtrl', [ '$scope', 'authService', 'dataService', '$state', '$location', function($scope, authService, dataService, $state, $location) {
   var vm = this;
 
   vm.product = {
@@ -7,10 +7,10 @@ app.controller('createProductCtrl', [ '$scope', 'authService', 'dataService', '$
     description : "",
     value : 0,
     for_sale : false,
-  };
+    picture: []
+  }
 
   vm.createProduct = function () {
-    console.log(vm.product)
     dataService
     .createProduct(vm.product)
     .catch(function(err){
@@ -18,7 +18,7 @@ app.controller('createProductCtrl', [ '$scope', 'authService', 'dataService', '$
     })
     .then(function() {
       $state.go('home')
-    });
-  };
+    })
+  }
 
-}]);
+}])

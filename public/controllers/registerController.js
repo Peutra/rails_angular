@@ -1,4 +1,4 @@
-app.controller('registerCtrl', ['$scope', 'authService', '$location', function($scope, authService, $location) {
+app.controller('registerCtrl', ['$scope', 'authService', '$location', '$state', function($scope, authService, $location, $state) {
     var vm = this;
     vm.credentials = {
       pseudonym : "",
@@ -12,7 +12,7 @@ app.controller('registerCtrl', ['$scope', 'authService', '$location', function($
           console.log(err)
         })
         .then(function(){
-          $location.path('home')
+          $state.go('home')
         });
     };
 }])
