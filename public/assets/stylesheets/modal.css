@@ -1,0 +1,10 @@
+.modal {
+  width: 25% !important;
+  padding-bottom: 24px;
+  border-radius: 5px;
+  border: solid 1px #FFDC00;
+}
+
+.modal h4 {
+  color: #001f3f;
+}
