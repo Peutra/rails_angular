@@ -6,6 +6,10 @@
   max-height: 80px;
 }
 
+.card a {
+  outline: 0;
+}
+
 .card span.badge.new:after {
   content: "";
 }
