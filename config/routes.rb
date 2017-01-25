@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       delete '/products/:id' => 'products#read'
       post '/vote' => 'users#vote'
       get '/vote' => 'users#current_vote'
+      post '/rate_product' => 'users#rate_product'
     end
   end
 

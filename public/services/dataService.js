@@ -55,12 +55,24 @@ app.factory('dataService',  ['$http', 'authService', function($http, authService
       })
   }
 
+  var ratingProduct = function(user_id, product_id, rate) {
+    var rate = {user_id: user_id, rateable_id: product_id, value: rate}
+    console.log(rate)
+    return $http.post('/api/rate_product', rate)
+      .then(function(result) {
+        return result
+      }, function(reason) {
+        return reason
+      })
+  }
+
   return {
     getProfile : getProfile,
     createProduct : createProduct,
     getProducts : getProducts,
     voteFor : voteFor,
-    getUserVote : getUserVote
+    getUserVote : getUserVote,
+    ratingProduct : ratingProduct
   }
 
 

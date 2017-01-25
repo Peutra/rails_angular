@@ -8,7 +8,7 @@ Covered :
 * Angular
 * Jwt
 --------
-Resources used
+Resources used<br>
 ============================= AUTHENTICATION (Sorcery/JWT)
 
 https://adrianperez.org/json-web-tokens-with-rails-sorcery-and-angularjs/

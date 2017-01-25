@@ -11,6 +11,21 @@ class UsersController < ApplicationController
     render json: {:status => 200, :message => "A voté !", :current_vote => current_vote}
   end
 
+  def rate_product
+    @rating = Rating.product_rate_exists?(rate_product_params[:user_id], rate_product_params[:rateable_id])
+    p @rating
+    if @rating == nil
+      @new_rating = Rating.new(rate_product_params.merge(rateable_type: "Product"))
+      if @new_rating.save
+        render json: {:status => 200, :message => "A noté !", :current_rate => @new_rating}
+      else
+        render json: {:status => 400, :message => "Mmmmh ça n'a pas fonctionné"}
+      end
+    else
+      @rating.update(value: rate_product_params[:value])
+    end
+  end
+
   private
 
   def vote_params
@@ -19,6 +34,10 @@ class UsersController < ApplicationController
 
   def current_vote_params
     params.permit(:user_id)
+  end
+
+  def rate_product_params
+    params.permit(:user_id, :rateable_id, :value)
   end
 
 end
