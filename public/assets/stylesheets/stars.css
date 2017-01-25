@@ -13,6 +13,7 @@
   font-size: 36px;
   color: #444;
   transition: all .2s;
+  margin: 10px;
 }
 
 .rating input.star:checked ~ label:after {
@@ -27,7 +28,7 @@
   display: none;
 }
 
-.rating input.star:checked ~ label.star:before {
+input.star:checked ~ label.star:before {
   content: '\f005';
   color: #FD4;
   transition: all .25s;
