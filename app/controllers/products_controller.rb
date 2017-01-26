@@ -28,10 +28,22 @@ class ProductsController < ApplicationController
   def delete
   end
 
+  def current_rate
+    current_rate = Rating.product_average_rate(current_rate_params[:product_id].to_i)
+    render json: {:status => 200,
+                  :message => "Dernière note globale retournée",
+                  :current_rate => current_rate,
+                  :product_id => current_rate_params[:product_id]}
+  end
+
   private
 
   def product_params
     params.permit(:first_name, :last_name, :description, :value, :for_sale, :picture)
+  end
+
+  def current_rate_params
+    params.permit(:product_id)
   end
 
 end
