@@ -21,7 +21,7 @@
               <a href="#">
                 <div class="card-image">
                   <!-- Modal Trigger -->
-                  <a class="average-rating" data-target='rating-modal-{{product.id}}' modal><span class="new badge blue"> Note : {{product.average}}</span></a>
+                  <a class="average-rating" data-target='rating-modal-{{product.id}}' modal><span class="new badge blue"> Note : <b>{{product.average}}</b></span></a>
                   <!-- End of Modal Trigger -->
                   <img ng-click="vote(product.id)" src="{{product.picture_url}}" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%);">
                   <span class="card-title">{{product.first_name}} {{product.last_name}}</span>

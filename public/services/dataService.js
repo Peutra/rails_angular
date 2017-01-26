@@ -66,13 +66,24 @@ app.factory('dataService',  ['$http', 'authService', function($http, authService
       })
   }
 
+  var currentRateProduct = function(product_id) {
+    return $http.get('/api/current_rate', {
+      params: { product_id: product_id }
+    }).then(function(result) {
+        return result
+      }, function(reason) {
+        return reason
+    })
+  }
+
   return {
     getProfile : getProfile,
     createProduct : createProduct,
     getProducts : getProducts,
     voteFor : voteFor,
     getUserVote : getUserVote,
-    ratingProduct : ratingProduct
+    ratingProduct : ratingProduct,
+    currentRateProduct : currentRateProduct
   }
 
 
