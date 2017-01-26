@@ -46,6 +46,7 @@ GEM
     cloudinary (1.1.7)
       aws_cf_signer
       rest-client
+    coderay (1.1.1)
     concurrent-ruby (1.0.4)
     domain_name (0.5.20161129)
       unf (>= 0.0.5, < 1.0.0)
@@ -87,6 +88,12 @@ GEM
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
     pg (0.19.0)
+    pry (0.10.4)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     puma (3.6.2)
     rack (2.0.1)
     rack-cors (0.4.0)
@@ -126,6 +133,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    slop (3.6.0)
     sorcery (0.10.2)
       bcrypt (~> 3.1)
       oauth (~> 0.4, >= 0.4.4)
@@ -164,6 +172,7 @@ DEPENDENCIES
   jwt
   listen (~> 3.0.5)
   pg (~> 0.18)
+  pry-rails
   puma (~> 3.0)
   rack-cors
   rack-rewrite (~> 1.5.0)
