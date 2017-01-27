@@ -3,6 +3,7 @@ app.controller('indexProductsCtrl', ['$scope', 'dataService', function($scope, d
        console.log(response)
        if (response.data) {
          $scope.products = response.data.products
+         console.log(response.data.products)
        } else {
          $scope.products = "Pas encore de produits !"
        }

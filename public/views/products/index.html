@@ -32,7 +32,8 @@
               </div>
               <div class="card-action">
                 <a href="#">En savoir plus</a>
-                <span class="new badge blue"><b>{{product.value | number}}</b>  <i class="fa fa-credit-card-alt" aria-hidden="true"></i></span>
+                <span ng-if="product.for_sale" class="new badge blue"><b>{{product.value | number}}</b>  <i class="fa fa-credit-card-alt" aria-hidden="true"></i></span>
+                <span ng-if="!product.for_sale" class="new badge red"><b>Vendu</b>  <i class="fa fa-usd" aria-hidden="true"></i></span>
               </div>
             </div>
           </div>
