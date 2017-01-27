@@ -2,8 +2,8 @@
    min-width: 274px;
 }
 
-.card .card-content {
-  max-height: 80px;
+.card .card-content p {
+   /*TODO LIMITER NBR DE LIGNES TROP DUR*/
 }
 
 .card a {
@@ -46,4 +46,8 @@
 .card .average-rating span {
   color: white;
   border: solid 1px #FFDC00;
+}
+
+.card .trigger-bidding-modal {
+  cursor: pointer;
 }

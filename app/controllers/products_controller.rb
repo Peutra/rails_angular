@@ -39,7 +39,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.permit(:first_name, :last_name, :description, :value, :for_sale, :picture)
+    params.permit(:first_name, :last_name, :description, :start_value, :for_sale, :picture)
   end
 
   def current_rate_params

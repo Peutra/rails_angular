@@ -32,32 +32,106 @@
               </div>
               <div class="card-action">
                 <a href="#">En savoir plus</a>
-                <span ng-if="product.for_sale" class="new badge blue"><b>{{product.value | number}}</b>  <i class="fa fa-credit-card-alt" aria-hidden="true"></i></span>
+                <a class="trigger-bidding-modal" ng-if="product.for_sale" data-target="bidding-modal-{{product.id}}" modal><span class="new badge blue"><b>{{product.start_value | number}}</b>  <i class="fa fa-credit-card-alt" aria-hidden="true"></i></span></a>
                 <span ng-if="!product.for_sale" class="new badge red"><b>Vendu</b>  <i class="fa fa-usd" aria-hidden="true"></i></span>
               </div>
             </div>
           </div>
-          <!-- Modal Structure -->
-          <div id="rating-modal-{{product.id}}" class="modal" ng-controller="rateProductCtrl as rateProductController">
-              <div class="modal-content">
+          <!-- Bidding Modal Structure -->
+          <!-- ADD CONTROLLER ONCE READY -->
+          <div ng-if="product.for_sale" id="bidding-modal-{{product.id}}" class="modal bidding-modal">
+            <div class="modal-content">
+              <div class="intro-bid">
                 <h4>{{product.first_name}} {{product.last_name}}</h4>
-                <div class="stars">
-                  <form class="rating" action="">
-                    <input class="star star-5" ng-click="rateProduct(product.id, 5)" id="star-5-{{product.id}}" type="radio" name="star"/>
-                    <label class="star star-5" for="star-5-{{product.id}}"></label>
-                    <input class="star star-4" ng-click="rateProduct(product.id, 4)" id="star-4-{{product.id}}" type="radio" name="star"/>
-                    <label class="star star-4" for="star-4-{{product.id}}"></label>
-                    <input class="star star-3" ng-click="rateProduct(product.id, 3)" id="star-3-{{product.id}}" type="radio" name="star"/>
-                    <label class="star star-3" for="star-3-{{product.id}}"></label>
-                    <input class="star star-2" ng-click="rateProduct(product.id, 2)" id="star-2-{{product.id}}" type="radio" name="star"/>
-                    <label class="star star-2" for="star-2-{{product.id}}"></label>
-                    <input class="star star-1" ng-click="rateProduct(product.id, 1)" id="star-1-{{product.id}}" type="radio" name="star"/>
-                    <label class="star star-1" for="star-1-{{product.id}}"></label>
-                  </form>
+                <p>Valeur actuelle : <b>1000</b></p>
+                <p>Enchère maximale : <b>10 000</b></p>
+                <p>Temps restant: <b>10j</b></p>
+              </div>
+              <div class="spacer"></div>
+              <div class="middle-bid">
+                <div class="input-field col s12">
+                  <input type="number" name="bid-{{product.id}}" min="0" class="validate" autofocus="false">
+                  <label for="bid-{{product.id}}">Enchère</label>
+                </div>
+                <div class="small-spacer"></div>
+                <div class="input-field col s12">
+                  <p>
+                    <input type="checkbox" class="filled-in" id="filled-in-box-{{product.id}}" />
+                    <label for="filled-in-box-{{product.id}}">Enchère automatique</label>
+                  </p>
+                </div>
+                <div class="input-field col s12">
+                  <div class="small-spacer"></div>
+                  <label for="endDate-{{product.id}}">Date de fin</label>
+                  <input input-date
+                  type="text"
+                  name="created"
+                  id="endDate-{{product.id}}"
+                  ng-model="currentTime"
+                  container=""
+                  format="dd/mm/yyyy"
+                  months-full="{{ month }}"
+                  months-short="{{ monthShort }}"
+                  weekdays-full="{{ weekdaysFull }}"
+                  weekdays-short="{{ weekdaysShort }}"
+                  weekdays-letter="{{ weekdaysLetter }}"
+                  disable="disable"
+                  min="{{ minDate }}"
+                  max="{{ maxDate }}"
+                  today="today"
+                  first-day="1"
+                  clear="clear"
+                  close="close"
+                  select-years="15"
+                  on-start="onStart()"
+                  on-render="onRender()"
+                  on-open="onOpen()"
+                  on-close="onClose()"
+                  on-set="onSet()"
+                  on-stop="onStop()" />
+                </div>
+                <div class="input-field col s12">
+                  <input type="number" name="increment-{{product.id}}" min="0" class="validate" autofocus="false" ng-model="vm.product.start_value">
+                  <label for="increment-{{product.id}}">Incrément</label>
+                </div>
+                <div class="input-field col s12">
+                  <input type="number" name="max-bid{{product.id}}" min="0" class="validate" autofocus="false" ng-model="vm.product.start_value">
+                  <label for="max-bid-{{product.id}}">Enchère max</label>
+                </div>
+                <div class="input-field col s12">
+                  <a class="waves-effect waves-light btn"><i class="material-icons left"></i>Enchérir</a>
+                </div>
+                <div class="small-spacer"></div>
+              </div>
+              <div class="outro-bid">
+                <div class="col s12">
+                  <p>Historique de l'enchère courante</p>
                 </div>
               </div>
+            </div>
           </div>
-          <!-- End of modal structure -->
+          <!-- End of bidding modal structure -->
+          <!-- Rating Modal Structure -->
+          <div id="rating-modal-{{product.id}}" class="modal rating-modal" ng-controller="rateProductCtrl as rateProductController">
+            <div class="modal-content">
+              <h4>{{product.first_name}} {{product.last_name}}</h4>
+              <div class="stars">
+                <form class="rating" action="">
+                  <input class="star star-5" ng-click="rateProduct(product.id, 5)" id="star-5-{{product.id}}" type="radio" name="star"/>
+                  <label class="star star-5" for="star-5-{{product.id}}"></label>
+                  <input class="star star-4" ng-click="rateProduct(product.id, 4)" id="star-4-{{product.id}}" type="radio" name="star"/>
+                  <label class="star star-4" for="star-4-{{product.id}}"></label>
+                  <input class="star star-3" ng-click="rateProduct(product.id, 3)" id="star-3-{{product.id}}" type="radio" name="star"/>
+                  <label class="star star-3" for="star-3-{{product.id}}"></label>
+                  <input class="star star-2" ng-click="rateProduct(product.id, 2)" id="star-2-{{product.id}}" type="radio" name="star"/>
+                  <label class="star star-2" for="star-2-{{product.id}}"></label>
+                  <input class="star star-1" ng-click="rateProduct(product.id, 1)" id="star-1-{{product.id}}" type="radio" name="star"/>
+                  <label class="star star-1" for="star-1-{{product.id}}"></label>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- End of rating modal structure -->
         </div>
       </div>
     </div>

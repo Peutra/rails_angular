@@ -34,6 +34,9 @@ gem 'rack-rewrite', '~> 1.5.0'
 # To handle images upload
 gem 'cloudinary'
 
+# To dump db as seed
+gem 'seed_dump'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

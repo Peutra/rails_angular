@@ -1,10 +1,17 @@
-.modal {
+.rating-modal {
   width: 25% !important;
   padding-bottom: 24px;
   border-radius: 5px;
   border: solid 1px #FFDC00;
 }
 
-.modal h4 {
+.rating-modal h4 {
   color: #001f3f;
+}
+
+.bidding-modal {
+  width: 50% !important;
+  border-radius: 5px;
+  border: solid 1px #001f3f;
+  padding-bottom: 24px;
 }

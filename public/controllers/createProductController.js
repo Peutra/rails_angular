@@ -5,7 +5,7 @@ app.controller('createProductCtrl', [ '$scope', 'authService', 'dataService', '$
     first_name : "",
     last_name : "",
     description : "",
-    value : 0,
+    start_value : 0,
     for_sale : false,
     picture: []
   }
