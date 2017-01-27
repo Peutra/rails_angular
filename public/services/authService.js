@@ -31,7 +31,8 @@ app.factory('authService',  ['$http', '$window', function($http, $window) {
         return {
           email : payload.email,
           pseudonym : payload.pseudonym,
-          id : payload.user_id
+          id : payload.user_id,
+          credits : payload.credits
         };
       }
     };

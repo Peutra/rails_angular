@@ -14,13 +14,16 @@
       <li ng-if="!isLoggedIn"><a ui-sref="login">Connexion</a></li>
       <li><a ui-sref="products">Produits</a></li>
       <li><a href="#">Sondage</a></li>
-      <a ng-show="isLoggedIn" class='no-uppercase dropdown-button btn' href='javascript:void(0);' data-activates='profile-dropdown-large' data-beloworigin="true" constrain-width="false" dropdown>
-        {{ currentUser.pseudonym | capitalize }}
-      </a>
+      <li><a ng-show="isLoggedIn" class='no-uppercase dropdown-button btn navbar-dropdown' href='javascript:void(0);' data-activates='profile-dropdown-large' data-beloworigin="true" constrain-width="false" dropdown>
+        <b>{{ currentUser.pseudonym | capitalize }}</b>
+      </a></li>
       <ul id='profile-dropdown-large' class='dropdown-content'>
         <li ng-if="isLoggedIn"><a href="#">Profil</a></li>
+        <li ng-if="isLoggedIn"><a href="#">Mes produits</a></li>
+        <li ng-if="isLoggedIn"><a href="#">Mes enchères</a></li>
         <li ng-if="isLoggedIn"><a href="#" ng-click="logout()">Déconnexion</a></li>
       </ul>
+      <li ng-if="isLoggedIn" class="orange lighten-2"><a href="#">Crédits : <b>{{ currentUser.credits }}</b> <i class="fa fa-credit-card-alt" aria-hidden="true"></i></a></li>
     </ul>
     <ul class="side-nav" id="side-menu">
       <li ng-if="!isLoggedIn"><a ui-sref="register">Inscription</a></li>

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get '/vote' => 'users#current_vote'
       post '/rate_product' => 'users#rate_product'
       get '/current_rate' => 'products#current_rate'
+      get '/credits' => 'users#credits'
     end
   end
 

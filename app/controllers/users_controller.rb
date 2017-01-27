@@ -26,6 +26,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def credits
+    current_credits = User.get_user_credits(credits_params[:user_id].to_i)
+    render json: {:status => 200, :message => "Number of credits", :current_credits => current_credits}
+  end
+
   private
 
   def vote_params
@@ -38,6 +43,10 @@ class UsersController < ApplicationController
 
   def rate_product_params
     params.permit(:user_id, :rateable_id, :value)
+  end
+
+  def credits_params
+    params.permit(:user_id)
   end
 
 end
