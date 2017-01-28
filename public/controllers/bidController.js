@@ -1,4 +1,4 @@
-app.controller('bid', [ '$scope', 'authService', 'dataService', '$state', '$location', function($scope, authService, dataService, $state, $location) {
+app.controller('bidCtrl', [ '$scope', 'authService', 'dataService', '$state', '$location', function($scope, authService, dataService, $state, $location) {
 
   var currentTime = new Date();
   $scope.currentTime = currentTime;
@@ -31,6 +31,18 @@ app.controller('bid', [ '$scope', 'authService', 'dataService', '$state', '$loca
   $scope.onStop = function () {
       console.log('onStop');
   };
+
+  $scope.bid = {
+
+  }
+
+  $scope.createBid = function(product_id, bid) {
+    console.log(bid)
+    console.log(bid.auto)
+    console.log("----------\n")
+    console.log(product_id)
+    console.log(authService.currentUser().id)
+  }
 
 
 }])

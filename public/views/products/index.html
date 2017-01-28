@@ -38,8 +38,7 @@
             </div>
           </div>
           <!-- Bidding Modal Structure -->
-          <!-- ADD CONTROLLER ONCE READY -->
-          <div ng-if="product.for_sale" id="bidding-modal-{{product.id}}" class="modal bidding-modal">
+          <div ng-controller="bidCtrl as bidController" ng-if="product.for_sale" id="bidding-modal-{{product.id}}" class="modal bidding-modal">
             <div class="modal-content">
               <div class="intro-bid">
                 <h4>{{product.first_name}} {{product.last_name}}</h4>
@@ -47,20 +46,18 @@
                 <p>Enchère maximale : <b>10 000</b></p>
                 <p>Temps restant: <b>10j</b></p>
               </div>
-              <div class="spacer"></div>
               <div class="middle-bid">
                 <div class="input-field col s12">
-                  <input type="number" name="bid-{{product.id}}" min="0" class="validate" autofocus="false">
+                  <input ng-model="bid.value" type="number" name="bid-{{product.id}}" min="0" class="validate" autofocus="false">
                   <label for="bid-{{product.id}}">Enchère</label>
                 </div>
-                <div class="small-spacer"></div>
                 <div class="input-field col s12">
                   <p>
-                    <input type="checkbox" class="filled-in" ng-model="bidmodel.automatic[product.id]" id="filled-in-box-{{product.id}}" />
+                    <input ng-model="bid.auto" type="checkbox" class="filled-in" id="filled-in-box-{{product.id}}" />
                     <label for="filled-in-box-{{product.id}}">Enchère automatique</label>
                   </p>
                 </div>
-                <div ng-show="bidmodel.automatic[product.id]">
+                <div ng-show="bid.auto">
                   <div class="input-field col s12">
                     <div class="small-spacer"></div>
                     <label for="endDate-{{product.id}}">Date de fin</label>
@@ -68,7 +65,7 @@
                     type="text"
                     name="created"
                     id="endDate-{{product.id}}"
-                    ng-model="currentTime"
+                    ng-model="bid.currentTime"
                     container=""
                     format="dd/mm/yyyy"
                     months-full="{{ month }}"
@@ -92,17 +89,17 @@
                     on-stop="onStop()" />
                   </div>
                   <div class="input-field col s12">
-                    <input type="number" name="increment-{{product.id}}" min="0" class="validate" autofocus="false" ng-model="vm.product.start_value">
+                    <input ng-model="bid.increment_by" type="number" name="increment-{{product.id}}" min="0" class="validate" autofocus="false">
                     <label for="increment-{{product.id}}">Incrément</label>
                   </div>
                   <div class="input-field col s12">
-                    <input type="number" name="max-bid{{product.id}}" min="0" class="validate" autofocus="false" ng-model="vm.product.start_value">
+                    <input ng-model="bid.max_value" type="number" name="max-bid{{product.id}}" min="0" class="validate" autofocus="false">
                     <label for="max-bid-{{product.id}}">Enchère max</label>
                   </div>
-                  <div class="input-field col s12">
-                    <a class="waves-effect waves-light btn"><i class="material-icons left"></i>Enchérir</a>
-                  </div>
                   <div class="small-spacer"></div>
+                </div>
+                <div class="input-field col s12">
+                  <a ng-click="createBid(bid, product.id)" class="waves-effect waves-light btn"><i class="material-icons left"></i>Enchérir</a>
                 </div>
               </div>
               <div class="outro-bid">
