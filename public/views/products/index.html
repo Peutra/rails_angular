@@ -39,14 +39,12 @@
           </div>
           <!-- Bidding Modal Structure -->
           <div ng-controller="bidCtrl as bidController" ng-if="product.for_sale" id="bidding-modal-{{product.id}}" class="modal bidding-modal">
-            {{minDate}}
-            {{date}}
             <div class="modal-content">
               <div class="intro-bid">
                 <h4>{{product.first_name}} {{product.last_name}}</h4>
                 <p>Valeur actuelle : <b>{{ product.value | number}}</b></p>
                 <p>Enchère maximale : <b>{{ product.max_value | number}}</b></p>
-                <p>Temps restant: <b>{{ product.end_auto_date.getTime() }}</b></p>
+                <p>Temps restant: <b>{{ timeLeft | number:0 }}</b> jours</p>
               </div>
               <div class="middle-bid">
                 <div class="input-field col s12">
@@ -106,6 +104,11 @@
               <div class="outro-bid">
                 <div class="col s12">
                   <p>Historique de l'enchère courante</p>
+                  <p>--------------------------------</p>
+                  <div class="bid-history" ng-repeat="bid in product.bids | orderBy: reverse : 'bid[created_at]'">
+                    <p>{{ bid["created_at"] | date:'dd/MM/yyyy HH:mm'}} : <b>{{ bid["value"] | number }} $</b><span ng-if="bid['auto']" class="new badge blue"> automatique</span></p>
+                  </div>
+                  Valeur de départ : <b>{{product.start_value | number}} $</b>
                 </div>
               </div>
             </div>

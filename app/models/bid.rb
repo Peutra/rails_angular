@@ -6,4 +6,9 @@ class Bid < ApplicationRecord
     product_value = Product.current_value(product_id)
     return Bid.where(product_id: product_id, auto: true).where("max_value > ?", product_value).where("end_auto_date > ?", Time.now)
   end
+
+  def self.get_bids(product_id)
+    return Bid.where(product_id: product_id)
+  end
+  
 end

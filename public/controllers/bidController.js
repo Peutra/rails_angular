@@ -12,7 +12,8 @@ app.controller('bidCtrl', [ '$scope', 'authService', 'dataService', '$state', '$
   $scope.clear = 'Clear';
   $scope.close = 'Close';
   var days = 15;
-  $scope.minDate = (new Date($scope.date)).toISOString();
+  $scope.timeLeft = (new Date($scope.$parent.product.end_bid_date) - date) / (1000 * 60 * 60 * 24)
+  $scope.minDate = (new Date($scope.date)).toISOString()
 
   $scope.bid = {
 

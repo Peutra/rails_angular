@@ -8,6 +8,9 @@ class Product < ApplicationRecord
     Product.all.each do |product|
       tmp_product = product.as_json
       tmp_product[:average] = Rating.product_average_rate(product.id)
+      if product.for_sale
+        tmp_product[:bids] = Bid.get_bids(product.id)
+      end
       tmp_products << tmp_product
     end
     return tmp_products
@@ -20,7 +23,7 @@ class Product < ApplicationRecord
   def self.update_value(product_id, value)
     product = Product.find(product_id)
     if product.for_sale
-      product.update(value: value)      
+      product.update(value: value)
     end
   end
 

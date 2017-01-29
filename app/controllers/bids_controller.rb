@@ -30,7 +30,7 @@ class BidsController < ApplicationController
     end
     # 0.3 CHECK IF BID'S START VALUE IS EQUAL OR SUPERIOR TO PRODUCT'S MAX VALUE (IF YES STOP)
     if current_product_max_value != nil && bid_params[:start_value] >= current_product_max_value
-      # 1. CREATE BID
+      # 1. CREATE BID      
       save_bid(bid_params)
       return
       # 2. SET PRODUCT'S ON_SALE TO FALSE
@@ -50,7 +50,7 @@ class BidsController < ApplicationController
   end
 
   def save_bid(bid)
-    @new_bid = Bid.new(bid)
+    @new_bid = Bid.new(bid.merge(value: bid_params[:start_value]))
     if @new_bid.save
       Product.update_value(bid[:product_id], bid[:start_value])
       render json: {:status => 200, :message => "Merci pour votre enchère."}
