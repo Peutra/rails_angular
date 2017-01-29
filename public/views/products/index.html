@@ -48,7 +48,7 @@
               </div>
               <div class="middle-bid">
                 <div class="input-field col s12">
-                  <input ng-model="bid.value" type="number" name="bid-{{product.id}}" min="0" class="validate" autofocus="false">
+                  <input ng-model="bid.start_value" type="number" name="bid-{{product.id}}" min="0" class="validate" autofocus="false">
                   <label for="bid-{{product.id}}">Enchère</label>
                 </div>
                 <div class="input-field col s12">
@@ -65,7 +65,7 @@
                     type="text"
                     name="created"
                     id="endDate-{{product.id}}"
-                    ng-model="bid.currentTime"
+                    ng-model="bid.end_auto_date"
                     container=""
                     format="dd/mm/yyyy"
                     months-full="{{ month }}"

@@ -1,7 +1,7 @@
 app.controller('bidCtrl', [ '$scope', 'authService', 'dataService', '$state', '$location', function($scope, authService, dataService, $state, $location) {
 
-  var currentTime = new Date();
-  $scope.currentTime = currentTime;
+  var end_auto_date = new Date();
+  $scope.end_auto_date = end_auto_date;
   $scope.month = ['Januar', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   $scope.monthShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   $scope.weekdaysFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -11,8 +11,8 @@ app.controller('bidCtrl', [ '$scope', 'authService', 'dataService', '$state', '$
   $scope.clear = 'Clear';
   $scope.close = 'Close';
   var days = 15;
-  $scope.minDate = (new Date($scope.currentTime.getTime() - ( 1000 * 60 * 60 *24 * days ))).toISOString();
-  $scope.maxDate = (new Date($scope.currentTime.getTime() + ( 1000 * 60 * 60 *24 * days ))).toISOString();
+  $scope.minDate = (new Date($scope.end_auto_date.getTime() - ( 1000 * 60 * 60 *24 * days ))).toISOString();
+  $scope.maxDate = (new Date($scope.end_auto_date.getTime() + ( 1000 * 60 * 60 *24 * days ))).toISOString();
   $scope.onStart = function () {
       console.log('onStart');
   };
