@@ -32,19 +32,21 @@
               </div>
               <div class="card-action">
                 <a href="#">En savoir plus</a>
-                <a class="trigger-bidding-modal" ng-if="product.for_sale" data-target="bidding-modal-{{product.id}}" modal><span class="new badge blue"><b>{{product.start_value | number}}</b>  <i class="fa fa-credit-card-alt" aria-hidden="true"></i></span></a>
+                <a class="trigger-bidding-modal" ng-if="product.for_sale" data-target="bidding-modal-{{product.id}}" modal><span class="new badge blue"><b>{{product.value | number}}</b>  <i class="fa fa-credit-card-alt" aria-hidden="true"></i></span></a>
                 <span ng-if="!product.for_sale" class="new badge red"><b>Vendu</b>  <i class="fa fa-usd" aria-hidden="true"></i></span>
               </div>
             </div>
           </div>
           <!-- Bidding Modal Structure -->
           <div ng-controller="bidCtrl as bidController" ng-if="product.for_sale" id="bidding-modal-{{product.id}}" class="modal bidding-modal">
+            {{minDate}}
+            {{date}}
             <div class="modal-content">
               <div class="intro-bid">
                 <h4>{{product.first_name}} {{product.last_name}}</h4>
-                <p>Valeur actuelle : <b>1000</b></p>
-                <p>Enchère maximale : <b>10 000</b></p>
-                <p>Temps restant: <b>10j</b></p>
+                <p>Valeur actuelle : <b>{{ product.value | number}}</b></p>
+                <p>Enchère maximale : <b>{{ product.max_value | number}}</b></p>
+                <p>Temps restant: <b>{{ product.end_auto_date.getTime() }}</b></p>
               </div>
               <div class="middle-bid">
                 <div class="input-field col s12">
@@ -75,7 +77,6 @@
                     weekdays-letter="{{ weekdaysLetter }}"
                     disable="disable"
                     min="{{ minDate }}"
-                    max="{{ maxDate }}"
                     today="today"
                     first-day="1"
                     clear="clear"
