@@ -37,11 +37,14 @@ app.controller('bidCtrl', [ '$scope', 'authService', 'dataService', '$state', '$
   }
 
   $scope.createBid = function(product_id, bid) {
-    console.log(bid)
-    console.log(bid.auto)
-    console.log("----------\n")
-    console.log(product_id)
-    console.log(authService.currentUser().id)
+    if (authService.isLoggedIn())
+      dataService.placeBid(product_id, bid, authService.currentUser().id)
+      .catch(function(err){
+        console.log(err)
+      })
+      .then(function() {
+        $state.go('products')
+      })
   }
 
 

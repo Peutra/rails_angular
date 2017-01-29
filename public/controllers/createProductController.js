@@ -11,6 +11,7 @@ app.controller('createProductCtrl', [ '$scope', 'authService', 'dataService', '$
   }
 
   vm.createProduct = function () {
+    if (authService.isLoggedIn())
     dataService
     .createProduct(vm.product)
     .catch(function(err){

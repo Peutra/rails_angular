@@ -76,6 +76,17 @@ app.factory('dataService',  ['$http', 'authService', function($http, authService
     })
   }
 
+  var placeBid = function(product_id, bid, user_id) {
+    bid.product_id = product_id
+    bid.user_id = user_id
+    var data = { bid: bid}
+    return $http.post('/api/bids/create', data).then(function(result) {
+        return result
+      }, function(reason) {
+        return reason
+      })
+  }
+
   return {
     getProfile : getProfile,
     createProduct : createProduct,
@@ -83,7 +94,8 @@ app.factory('dataService',  ['$http', 'authService', function($http, authService
     voteFor : voteFor,
     getUserVote : getUserVote,
     ratingProduct : ratingProduct,
-    currentRateProduct : currentRateProduct
+    currentRateProduct : currentRateProduct,
+    placeBid : placeBid
   }
 
 
