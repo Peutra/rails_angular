@@ -2,8 +2,8 @@
    min-width: 274px;
 }
 
-.card .card-content p {
-   /*TODO LIMITER NBR DE LIGNES TROP DUR*/
+.card .card-content {
+
 }
 
 .card a {
@@ -13,6 +13,7 @@
 .card .card-image {
   cursor: pointer;
   cursor: hand;
+  max-height: 800px;
 }
 
 .card span.badge.new:after {

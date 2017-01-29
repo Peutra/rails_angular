@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170127111547) do
+ActiveRecord::Schema.define(version: 20170129140525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20170127111547) do
     t.integer  "max_value"
     t.datetime "end_bid_date"
     t.integer  "bid_batch",    default: 0
+    t.integer  "value"
     t.index ["user_id"], name: "index_products_on_user_id", using: :btree
   end
 
