@@ -40,13 +40,6 @@ class BidsController < ApplicationController
     end
     save_bid(bid_params)
     return
-    # 1. CREATE BID STORE CURRENT VALUE
-    # 2. IF OTHER BIDS AUTO
-     # 2.1 GET AUTO BIDS W/ END DATE < TODAY && MAX VALUE > CURRENT VALUE
-     # 2.2 RUN AUTO BIDS UNTIL (BEGIN / END) >>
-        # > MAX VALUE OF AUTO BID
-        # > MAX VALUE OF PRODUCT
-        # > ONLY ONE AUTO BID LEFT (OR CURRENT AUTO)
     # 3. RETURN BIDS HISTORY AND CURRENT VALUE (MAX BID ON CURRENT BID)
   end
 
@@ -59,7 +52,9 @@ class BidsController < ApplicationController
       # SET TO NON ACTIVE ALL OTHER BIDS
       Bid.set_non_active_losing_bids(bid[:product_id], @new_bid.id)
       Bid.run_auto_bids(bid[:product_id], @new_bid.value)
-      render json: {:status => 200, :message => "Merci pour votre enchère."}
+      updated_bids = Bid.get_bids(bid[:product_id])
+      product_new_value = Product.find(bid[:product_id]).value
+      render json: {:status => 200, :message => "Merci pour votre enchère.", :new_bids => updated_bids, :new_product_value => product_new_value}
     else
       render json: {:status => 400, :message => "Impossible de placer cette enchère, svp reessayez."}
     end

@@ -22,11 +22,14 @@ app.controller('bidCtrl', [ '$scope', 'authService', 'dataService', '$state', '$
   $scope.createBid = function(product_id, bid) {
     if (authService.isLoggedIn())
       dataService.placeBid(product_id, bid, authService.currentUser().id)
+      .then(function(result) {
+        $scope.product.bids = result.data.new_bids
+        console.log(result.data)
+        $scope.product.value = result.data.new_product_value
+        $state.go('products')
+      })
       .catch(function(err){
         console.log(err)
-      })
-      .then(function() {
-        $state.go('products')
       })
   }
 
