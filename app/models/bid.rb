@@ -38,8 +38,13 @@ class Bid < ApplicationRecord
     # SECOND MAXMAX VALUE PLUS INCREMENT OF THE SECOND ONE
     if valid_auto_bids.length === 1
       increment = valid_auto_bids[0].increment_by
-      valid_auto_bids[0].update(value: current_value + increment)
-      product.update(value: current_value + increment)
+      if valid_auto_bids[0].start_value === current_value
+        valid_auto_bids[0].update(value: current_value)
+        product.update(value: current_value)
+      else
+        valid_auto_bids[0].update(value: current_value + increment)
+        product.update(value: current_value + increment)
+      end
       Bid.set_non_active_losing_bids(product_id, valid_auto_bids[0].value)
     elsif valid_auto_bids.length > 1
       result = valid_auto_bids.sort_by{|e| -e[:max_value]}
