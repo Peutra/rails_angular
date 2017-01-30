@@ -106,7 +106,7 @@
                   <p>Historique de l'enchère courante</p>
                   <p>--------------------------------</p>
                   <div class="bid-history" ng-repeat="bid in product.bids | orderBy: reverse : 'bid[created_at]'">
-                    <p>{{ bid["created_at"] | date:'dd/MM/yyyy HH:mm'}} : <b>{{ bid["value"] | number }} $</b><span ng-if="bid['auto']" class="new badge blue"> automatique</span></p>
+                    <p>{{ bid["updated_at"] | date:'dd/MM/yyyy HH:mm'}} : <b>{{ bid["value"] | number }} $</b><span ng-if="bid['auto']" class="new badge blue"> automatique</span></p>
                   </div>
                   Valeur de départ : <b>{{product.start_value | number}} $</b>
                 </div>

@@ -23,4 +23,33 @@ class Bid < ApplicationRecord
     end
   end
 
+  def self.run_auto_bids(product_id, current_value)
+    current_date = Time.now
+    product = Product.find(product_id)
+    auto_bids = Bid.get_auto_bids(product_id)
+    valid_auto_bids = []
+    auto_bids.each do |auto_bid|
+      if ((auto_bid.max_value + auto_bid.increment_by > current_value) && (auto_bid.end_auto_date > current_date))
+        valid_auto_bids << auto_bid
+      end
+    end
+    # SEPERATE CASE WHERE ONE AUTO_BID (> SET AUTOMATICALLY VALUE TO CURRENT VALUE + INCREMENT)
+    # FOR THE REST OF THE CASES, CHECK THE TWO HIGHEST MAX VALUES AND SET THE MAXMAX VALUE TO THE
+    # SECOND MAXMAX VALUE PLUS INCREMENT OF THE SECOND ONE
+    if valid_auto_bids.length === 1
+      increment = valid_auto_bids[0].increment_by
+      valid_auto_bids[0].update(value: current_value + increment)
+      product.update(value: current_value + increment)
+      Bid.set_non_active_losing_bids(product_id, valid_auto_bids[0].value)
+    elsif valid_auto_bids.length > 1
+      result = valid_auto_bids.sort_by{|e| -e[:max_value]}
+      max_value_second_max = result[1].max_value
+      increment_value_first_max = result[0].increment_by
+      result[1].update(value: max_value_second_max)
+      result[0].update(value: max_value_second_max + increment_by)
+      product.update(value: max_value_second_max + increment_by)
+      Bid.set_non_active_losing_bids(product_id, result[0].id)
+    end
+  end
+
 end
