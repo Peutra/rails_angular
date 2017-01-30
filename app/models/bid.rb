@@ -46,8 +46,8 @@ class Bid < ApplicationRecord
       max_value_second_max = result[1].max_value
       increment_value_first_max = result[0].increment_by
       result[1].update(value: max_value_second_max)
-      result[0].update(value: max_value_second_max + increment_by)
-      product.update(value: max_value_second_max + increment_by)
+      result[0].update(value: (max_value_second_max + increment_value_first_max))
+      product.update(value: (max_value_second_max + increment_value_first_max))
       Bid.set_non_active_losing_bids(product_id, result[0].id)
     end
   end

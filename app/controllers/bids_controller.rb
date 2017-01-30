@@ -58,6 +58,7 @@ class BidsController < ApplicationController
       Product.update_value(bid[:product_id], bid[:start_value])
       # SET TO NON ACTIVE ALL OTHER BIDS
       Bid.set_non_active_losing_bids(bid[:product_id], @new_bid.id)
+      Bid.run_auto_bids(bid[:product_id], @new_bid.value)
       render json: {:status => 200, :message => "Merci pour votre enchère."}
     else
       render json: {:status => 400, :message => "Impossible de placer cette enchère, svp reessayez."}
