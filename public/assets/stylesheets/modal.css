@@ -13,5 +13,14 @@
   width: 50% !important;
   border-radius: 5px;
   border: solid 1px #001f3f;
-  padding-bottom: 24px;
+  padding-bottom: 100px !important;
+  margin-bottom: 100px !important;
+}
+
+.bidding-modal .modal-content .outro-bid div {
+  margin-bottom: 24px;
+}
+
+.outro-bid {
+  margin-bottom: 24px;
 }

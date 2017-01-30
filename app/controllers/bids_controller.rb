@@ -5,9 +5,10 @@ class BidsController < ApplicationController
     current_product_value = Product.current_value(bid_params[:product_id])
     current_product_max_value = Product.max_value(bid_params[:product_id])
     current_auto_bids = Bid.get_auto_bids(bid_params[:product_id])
+    current_user_active_bids_value = Bid.get_current_user_active_bids_value(bid_params[:user_id])
 
     # 0.0 CHECK IF USER HAS ENOUGH CREDITS IF NOT STOP & RENDER JSON
-    if current_user_credits < bid_params[:start_value]
+    if current_user_credits < (bid_params[:start_value] + current_user_active_bids_value)
       render json: {:status => 400, :message => "Vous êtes trop pauvre en crédits."}
       return
     end
@@ -30,10 +31,10 @@ class BidsController < ApplicationController
     end
     # 0.3 CHECK IF BID'S START VALUE IS EQUAL OR SUPERIOR TO PRODUCT'S MAX VALUE (IF YES STOP)
     if current_product_max_value != nil && bid_params[:start_value] >= current_product_max_value
-      # 1. CREATE BID      
+      # 1. CREATE BID
       save_bid(bid_params)
       return
-      # 2. SET PRODUCT'S ON_SALE TO FALSE
+      # 2. SET PRODUCT'S FOR_SALE TO FALSE
       # 3. SET PRODUCT'S OWNER TO CURRENT USER
       # 4. SAY BRAVO
     end
@@ -52,11 +53,18 @@ class BidsController < ApplicationController
   def save_bid(bid)
     @new_bid = Bid.new(bid.merge(value: bid_params[:start_value]))
     if @new_bid.save
+      # USE NEXT LINE TO DECREASE CREDIT ON WIN
+      # User.decrease_credit(bid_params[:user_id], bid_params[:start_value])
       Product.update_value(bid[:product_id], bid[:start_value])
+      # SET TO NON ACTIVE ALL OTHER BIDS
+      Bid.set_non_active_losing_bids(bid[:product_id], @new_bid.id)
       render json: {:status => 200, :message => "Merci pour votre enchère."}
     else
       render json: {:status => 400, :message => "Impossible de placer cette enchère, svp reessayez."}
     end
+  end
+
+  def update_auto_bids()
   end
 
   private

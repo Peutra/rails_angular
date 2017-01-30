@@ -18,4 +18,9 @@ class User < ApplicationRecord
     User.find(user_id).credits
   end
 
+  def self.decrease_credit(user_id, credits)
+    current_credits = User.get_user_credits(user_id)
+    User.find(user_id).update(credits: current_credits - credits)
+  end
+
 end

@@ -30,5 +30,4 @@ app.controller('bidCtrl', [ '$scope', 'authService', 'dataService', '$state', '$
       })
   }
 
-
 }])
